@@ -4,6 +4,7 @@ import git.simple.mybatis.model.Student;
 import git.simple.mybatis.utils.SessionFactoryUtil;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -46,5 +47,59 @@ public class IStudentDaoImpl implements IStudentDao {
         }
 
         return student;
+    }
+
+    @Override
+    public int addStudent(Student student) {
+        SqlSession session = null;
+
+        try {
+            session = SessionFactoryUtil.getSession();
+            IStudentDao mapper = session.getMapper(IStudentDao.class);
+            int rows = mapper.addStudent(student);
+            session.commit(); // 手动提交，防止无效提交
+            return rows;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return 0;
+        } finally {
+            if (null != session) session.close();
+        }
+    }
+
+    @Override
+    public int modifyNameById(HashMap map) {
+        SqlSession session = null;
+
+        try {
+            session = SessionFactoryUtil.getSession();
+            IStudentDao mapper = session.getMapper(IStudentDao.class);
+            int rows = mapper.modifyNameById(map);
+            session.commit(); // 手动提交，防止无效提交
+            return rows;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return 0;
+        } finally {
+            if (null != session) session.close();
+        }
+    }
+
+    @Override
+    public int deleteById(int school_code) {
+        SqlSession session = null;
+
+        try {
+            session = SessionFactoryUtil.getSession();
+            IStudentDao mapper = session.getMapper(IStudentDao.class);
+            int rows = mapper.deleteById(school_code);
+            session.commit(); // 手动提交，防止无效提交
+            return rows;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return 0;
+        } finally {
+            if (null != session) session.close();
+        }
     }
 }

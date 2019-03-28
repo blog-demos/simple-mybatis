@@ -2,6 +2,7 @@ package git.simple.mybatis.dao;
 
 import git.simple.mybatis.model.Student;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -13,4 +14,10 @@ public interface IStudentDao {
     List<Student> findAll();
 
     Student findById(int id);
+
+    int addStudent(Student student);
+
+    int modifyNameById(HashMap map);
+
+    int deleteById(int school_code);
 }
