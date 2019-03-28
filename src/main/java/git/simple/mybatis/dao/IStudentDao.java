@@ -20,4 +20,6 @@ public interface IStudentDao {
     int modifyNameById(HashMap map);
 
     int deleteById(int school_code);
+
+    int addBatch(List<Student> students);
 }

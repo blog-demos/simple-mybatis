@@ -102,4 +102,22 @@ public class IStudentDaoImpl implements IStudentDao {
             if (null != session) session.close();
         }
     }
+
+    @Override
+    public int addBatch(List<Student> students) {
+        SqlSession session = null;
+
+        try {
+            session = SessionFactoryUtil.getSession();
+            IStudentDao mapper = session.getMapper(IStudentDao.class);
+            int rows = mapper.addBatch(students);
+            session.commit();
+            return rows;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return 0;
+        } finally {
+            if (null != session) session.close();
+        }
+    }
 }

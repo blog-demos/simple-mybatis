@@ -4,6 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="git.simple.mybatis.dao.IStudentDao">
+    <sql id="insert_cols">school_code, name, create_time</sql>
+    
     <select id="findAll" resultType="git.simple.mybatis.model.Student">
         SELECT * FROM student_info
     </select>
@@ -13,7 +15,8 @@
     </select>
 
     <insert id="addStudent" parameterType="git.simple.mybatis.model.Student" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO student_info (school_code, name, create_time) VALUES (#{school_code}, #{name}, #{create_time})
+        <!-- INSERT INTO student_info (school_code, name, create_time) VALUES (#{school_code}, #{name}, #{create_time}) -->
+        INSERT INTO student_info (<include refid="insert_cols"/>) VALUES (#{school_code}, #{name}, #{create_time})
     </insert>
 
     <update id="modifyNameById" parameterType="hashmap">
@@ -23,4 +26,14 @@
     <delete id="deleteById" parameterType="int">
         DELETE FROM student_info WHERE school_code=#{school_code}
     </delete>
+
+    <insert id="addBatch">
+        INSERT INTO
+          student_info (<include refid="insert_cols"/>)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.school_code},#{item.name},#{item.create_time})
+        </foreach>
+    </insert>
+
 </mapper>

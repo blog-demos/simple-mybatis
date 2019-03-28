@@ -6,9 +6,7 @@ import git.simple.mybatis.model.Student;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Author: Q-WHai
@@ -35,9 +33,9 @@ public class MybatisTest {
     @Test
     public void test3() {
         Student student = new Student();
-        student.setSchool_code(10005);
-        student.setName("xiaonan");
-        student.setCreate_time("2019-03-28 14:23:34");
+        student.setSchool_code(10006);
+        student.setName("xiaoai");
+        student.setCreate_time("2019-03-28 16:06:34");
 
         IStudentDao dao = new IStudentDaoImpl();
         logger.info(String.format("mybatis.insert: %d", dao.addStudent(student)));
@@ -57,5 +55,40 @@ public class MybatisTest {
     public void test5() {
         IStudentDao dao = new IStudentDaoImpl();
         logger.info(String.format("mybatis.delete: %d", dao.deleteById(10002)));
+    }
+
+    @Test
+    public void test6() {
+        List<Student> students = new ArrayList<>();
+        for (int i = 0; i < 1000; i++) {
+            Student student = new Student();
+            student.setSchool_code(10010 + i);
+            student.setName(randomString(16));
+            student.setCreate_time("2019-03-28 18:43:34");
+
+            students.add(student);
+        }
+
+        IStudentDao dao = new IStudentDaoImpl();
+        logger.info(String.format("mybatis.insert.addBatch: %d", dao.addBatch(students)));
+    }
+
+    /**
+     * 随机生成一段字符串
+     *
+     * @param length
+     *      字符串长度限制
+     * @return
+     *      随机字符串
+     */
+    private String randomString(int length) {
+        StringBuffer buffer = new StringBuffer();
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            char c = (char) (random.nextInt(26) + 'a');
+            buffer.append(c);
+        }
+
+        return buffer.toString();
     }
 }
