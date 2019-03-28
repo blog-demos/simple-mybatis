@@ -1,4 +1,4 @@
-package git.simple.mybatis;
+package git.simple.mybatis.model;
 
 import java.io.Serializable;
 

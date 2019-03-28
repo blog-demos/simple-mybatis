@@ -2,6 +2,7 @@ package git.simple.mybatis;
 
 import git.simple.mybatis.dao.IStudentDao;
 import git.simple.mybatis.dao.IStudentDaoImpl;
+import git.simple.mybatis.model.Student;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 

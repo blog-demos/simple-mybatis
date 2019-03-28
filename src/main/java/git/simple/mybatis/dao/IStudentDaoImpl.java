@@ -1,6 +1,6 @@
 package git.simple.mybatis.dao;
 
-import git.simple.mybatis.Student;
+import git.simple.mybatis.model.Student;
 import git.simple.mybatis.utils.SessionFactoryUtil;
 import org.apache.ibatis.session.SqlSession;
 

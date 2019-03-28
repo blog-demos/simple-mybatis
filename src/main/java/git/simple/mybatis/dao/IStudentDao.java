@@ -1,6 +1,6 @@
 package git.simple.mybatis.dao;
 
-import git.simple.mybatis.Student;
+import git.simple.mybatis.model.Student;
 
 import java.util.List;
 
