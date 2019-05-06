@@ -2,7 +2,7 @@ package git.simple.mybatis;
 
 import git.simple.mybatis.dao.IStudentDao;
 import git.simple.mybatis.dao.IStudentDaoImpl;
-import git.simple.mybatis.model.Student;
+import git.simple.mybatis.model.Student2;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
@@ -19,20 +19,20 @@ public class MybatisTest {
     @Test
     public void test1() {
         IStudentDao dao = new IStudentDaoImpl();
-        List<Student> students = dao.findAll();
+        List<Student2> students = dao.findAll();
         logger.info(String.format("mybatis.select.COUNT = %d", students.size()));
     }
 
     @Test
     public void test2() {
         IStudentDao dao = new IStudentDaoImpl();
-        Student student = dao.findById(3);
+        Student2 student = dao.findById(3);
         logger.info(String.format("mybatis.select: %s", student));
     }
 
     @Test
     public void test3() {
-        Student student = new Student();
+        Student2 student = new Student2();
         student.setSchool_code(10006);
         student.setName("xiaoai");
         student.setCreate_time("2019-03-28 16:06:34");
@@ -59,9 +59,9 @@ public class MybatisTest {
 
     @Test
     public void test6() {
-        List<Student> students = new ArrayList<>();
+        List<Student2> students = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {
-            Student student = new Student();
+            Student2 student = new Student2();
             student.setSchool_code(10010 + i);
             student.setName(randomString(16));
             student.setCreate_time("2019-03-28 18:43:34");

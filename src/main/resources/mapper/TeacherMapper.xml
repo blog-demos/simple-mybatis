@@ -3,13 +3,13 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="git.simple.mybatis.dao.Student">
+<mapper namespace="git.simple.mybatis.dao.Teacher">
     <insert id="insertBatch">
         INSERT INTO
-        `student` (sno, name, sex, age, ctime)
+        `teacher` (sn, name, sex, age, ctime)
         VALUES
         <foreach collection="list" item="item" index="index" separator=",">
-            (${item.sno}, '${item.name}', ${item.sex}, ${item.age}, '${item.ctime}')
+            (${item.sn}, '${item.name}', ${item.sex}, ${item.age}, '${item.ctime}')
         </foreach>
     </insert>
 

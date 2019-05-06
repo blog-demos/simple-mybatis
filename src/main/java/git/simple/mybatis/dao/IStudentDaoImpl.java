@@ -1,6 +1,6 @@
 package git.simple.mybatis.dao;
 
-import git.simple.mybatis.model.Student;
+import git.simple.mybatis.model.Student2;
 import git.simple.mybatis.utils.SessionFactoryUtil;
 import org.apache.ibatis.session.SqlSession;
 
@@ -14,9 +14,9 @@ import java.util.List;
 public class IStudentDaoImpl implements IStudentDao {
 
     @Override
-    public List<Student> findAll() {
+    public List<Student2> findAll() {
         SqlSession session = null;
-        List<Student> students = null;
+        List<Student2> students = null;
 
         try {
             session = SessionFactoryUtil.getSession();
@@ -32,9 +32,9 @@ public class IStudentDaoImpl implements IStudentDao {
     }
 
     @Override
-    public Student findById(int id) {
+    public Student2 findById(int id) {
         SqlSession session = null;
-        Student student = null;
+        Student2 student = null;
 
         try {
             session = SessionFactoryUtil.getSession();
@@ -50,7 +50,7 @@ public class IStudentDaoImpl implements IStudentDao {
     }
 
     @Override
-    public int addStudent(Student student) {
+    public int addStudent(Student2 student) {
         SqlSession session = null;
 
         try {
@@ -104,7 +104,7 @@ public class IStudentDaoImpl implements IStudentDao {
     }
 
     @Override
-    public int addBatch(List<Student> students) {
+    public int addBatch(List<Student2> students) {
         SqlSession session = null;
 
         try {
