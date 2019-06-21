@@ -17,7 +17,7 @@ import java.util.*;
  */
 public class CmsTest {
 
-    private Set<String> students = new HashSet<>() {{
+    private Set<String> students = new HashSet<String>() {{
         add("Liam");
         add("Noah");
         add("Lucas");
@@ -50,7 +50,7 @@ public class CmsTest {
         add("Evan");
     }};
 
-    private Set<String> teachers = new HashSet<>(){{
+    private Set<String> teachers = new HashSet<String>(){{
         add("Zachary");
         add("Brayden");
         add("Austin");
@@ -64,7 +64,7 @@ public class CmsTest {
         add("Zavier");
     }};
 
-    private Set<String> courses = new HashSet<>() {{
+    private Set<String> courses = new HashSet<String>() {{
         add("MySQL");
         add("Data Structure");
         add("C");
